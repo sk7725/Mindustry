@@ -35,6 +35,7 @@ import mindustry.world.blocks.BuildBlock.*;
 import mindustry.world.blocks.payloads.*;
 import mindustry.world.blocks.power.*;
 import mindustry.world.blocks.storage.CoreBlock.*;
+import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.meta.*;
 
 import java.util.*;
@@ -129,7 +130,7 @@ public abstract class InputHandler implements InputProcessor, GestureListener{
         if(tile != null && tile.team == unit.team && pay.payloads().size < unit.type().payloadCapacity
             && unit.within(tile, tilesize * tile.block.size * 1.2f)){
             //pick up block directly
-            if(tile.block().buildVisibility != BuildVisibility.hidden && tile.block().size * tile.block().size <= unit.type().payloadCapacity - pay.payloads().size && tile.canPickup()){
+            if(tile.block().buildVisibility != BuildVisibility.hidden && tile.block().size * tile.block().size <= unit.type().payloadCapacity - pay.payloads().size && tile.canPickup() && tile.block instanceof CoreBlock){
                 pay.pickup(tile);
             }else{ //pick up block payload
                 Payload current = tile.getPayload();
