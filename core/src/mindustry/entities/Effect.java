@@ -46,6 +46,17 @@ public class Effect{
         layer = l;
         return this;
     }
+    
+    public Effect ground(){
+        layer = Layer.debris;
+        return this;
+    }
+    
+    public Effect ground(float duration){
+        layer = Layer.debris;
+        this.layerDuration = duration;
+        return this;
+    }
 
     public Effect layer(float l, float duration){
         layer = l;
